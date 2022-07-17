@@ -29,7 +29,9 @@ const Navbar = (props)=>{
 
     return(
         <header className={styles.header}>
-            <img className={styles["nav-btn__open"]} src={menuIcon} onClick={onClickNavButtonHandler} ref={navBtnRef}/>
+            <div className={styles["nav-btn"]}>
+                <img className={styles["nav-btn__open"]} src={menuIcon} onClick={onClickNavButtonHandler} ref={navBtnRef}/>
+            </div>
             <div className={`${backdropClasses}`}/>
             <h2 className={styles.logo}>Sneakers</h2>
             <nav className={navbarClasses}>
@@ -42,7 +44,7 @@ const Navbar = (props)=>{
                 </ul>
             </nav>
             <div className={styles.profile}>
-                <div>
+                <div className={styles.cart}>
                     <span className={`${styles.count} ${styles.active}`}>1</span>
                     <img className={styles["cart-icon"]} src = {cartIcon}/>
                 </div>
