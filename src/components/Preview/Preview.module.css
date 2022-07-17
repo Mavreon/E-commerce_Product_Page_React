@@ -1,0 +1,35 @@
+.preview-box, .main-image-box,.sub-image-box{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.preview-box{
+   width: 100%;
+   height: 100%;
+   padding: 1rem 8rem;
+}
+
+.main-image-box{
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.main-image-box img{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.sub-image-box{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sub-image-box img{
+    width: 20%;
+    border-radius: 1rem;
+}
