@@ -162,6 +162,17 @@
         }
     }
 
+    @keyframes TweenToLeft {
+        0%{
+            left: 0px;
+            display: block;
+        }
+        100%{
+            left: -1000px;
+            display: none;
+        }
+    }
+
     @keyframes IncreaseOpacity {
         0%{
             opacity: 0;

@@ -15,10 +15,10 @@ function App() {
 
       <Navbar/>
 
-      <Container>
+      {/* <Container>
         <Preview/>
         <Preview/>
-      </Container>
+      </Container> */}
     </React.Fragment>
   );
 }
