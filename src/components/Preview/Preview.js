@@ -8,24 +8,6 @@ import MainImageBox from "./MainImageBox";
 import SubImageBox from "./SubImageBox";
 
 const Preview =(props)=>{
-    const defaultDataSet = [
-        {
-            imageAddress: image1,
-            boxClasses: `${styles["sub-image-box"]}`
-        },
-        {
-            imageAddress: image2,
-            boxClasses: `${styles["sub-image-box"]}`
-        },
-        {
-            imageAddress: image3,
-            boxClasses: `${styles["sub-image-box"]}`
-        },
-        {
-            imageAddress: image4,
-            boxClasses: `${styles["sub-image-box"]}`
-        }
-    ];
     const previewDataSet = [
     {
         imageAddress: image1,
@@ -44,12 +26,18 @@ const Preview =(props)=>{
         boxClasses: `${styles["sub-image-box"]}`
     }
     ];
+    
     const [previewData, setPreviewData] = useState(previewDataSet);
     const [activeImage, setActiveImage] = useState(previewDataSet[0].imageAddress);
    
-    const onClickSubImageHandler= (image, className) => {
+    const onClickSubImageHandler= (image, index) => {
         setActiveImage(image);
-        setPreviewData(defaultDataSet);
+        let newData = [...previewData];
+        newData.forEach(object => {
+            object.boxClasses = `${styles["sub-image-box"]}`;
+        });
+        newData[index].boxClasses = `${styles["sub-image-box"]} ${styles.active}`;
+        setPreviewData(newData);
    }
 
     return(
@@ -58,6 +46,7 @@ const Preview =(props)=>{
             <div className={styles["sub-image-boxes"]}>
                 {previewData.map(object=><SubImageBox
                 key={previewData.indexOf(object)}
+                index = {previewData.indexOf(object)}
                 className={object.boxClasses} 
                 backgroundImage={object.imageAddress}
                 onClickSubImage = {onClickSubImageHandler}

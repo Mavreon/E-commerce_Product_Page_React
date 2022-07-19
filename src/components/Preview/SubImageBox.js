@@ -1,15 +1,12 @@
 import React,{useState} from "react";
 import styles from './SubImageBox.module.css'
 const SubImageBox = (props)=>{
-    const [className, setClassName] = useState(props.className);
-
     const onClickHandler = ()=>{
-        props.onClickSubImage(props.backgroundImage);
-        setClassName(`${styles["sub-image-box"]} ${styles.active}`);
+        props.onClickSubImage(props.backgroundImage, props.index);
     }
     return(
         <div 
-        className={className} 
+        className={props.className} 
         style={{backgroundImage: `url(${props.backgroundImage})` }}
         onClick={onClickHandler}
         />

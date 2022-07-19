@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import Navbar from "./components/Navbar/Navbar";
 import Container from "./components/UI/Container";
 import Preview from "./components/Preview/Preview";
+import Lightbox from "./components/Lightbox/Lightbox";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       </Helmet>
 
       <Navbar/>
-
+      <Lightbox/>
       <Container>
+        <Preview/>
         <Preview/>
       </Container>
     </React.Fragment>
