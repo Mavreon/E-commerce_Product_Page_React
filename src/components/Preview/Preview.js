@@ -4,51 +4,67 @@ import image1 from '../../images/image-product-1.jpg'
 import image2 from '../../images/image-product-2.jpg'
 import image3 from '../../images/image-product-3.jpg'
 import image4 from '../../images/image-product-4.jpg'
-
+import MainImageBox from "./MainImageBox";
+import SubImageBox from "./SubImageBox";
 
 const Preview =(props)=>{
-    const previewDataSet = [
+    const defaultDataSet = [
         {
-            key: 0,
             imageAddress: image1,
-            imageClasses: `${styles["sub-image-box"]} ${styles.active}`
+            boxClasses: `${styles["sub-image-box"]}`
         },
         {
-            key: 1,
             imageAddress: image2,
-            imageClasses: `${styles["sub-image-box"]}`
+            boxClasses: `${styles["sub-image-box"]}`
         },
         {
-            key: 2,
             imageAddress: image3,
-            imageClasses: `${styles["sub-image-box"]}`
+            boxClasses: `${styles["sub-image-box"]}`
         },
         {
-            key: 3,
             imageAddress: image4,
-            imageClasses: `${styles["sub-image-box"]}`
+            boxClasses: `${styles["sub-image-box"]}`
         }
     ];
-   const [previewData, setPreviewData] = useState(previewDataSet);
-   const [activeImage, setActiveImage] = useState(previewData[0].imageAddress);
-
-   const onClickSubImageHandler=(event)=>{
-    
-   };
+    const previewDataSet = [
+    {
+        imageAddress: image1,
+        boxClasses: `${styles["sub-image-box"]} ${styles.active}`
+    },
+    {
+        imageAddress: image2,
+        boxClasses: `${styles["sub-image-box"]}`
+    },
+    {
+        imageAddress: image3,
+        boxClasses: `${styles["sub-image-box"]}`
+    },
+    {
+        imageAddress: image4,
+        boxClasses: `${styles["sub-image-box"]}`
+    }
+    ];
+    const [previewData, setPreviewData] = useState(previewDataSet);
+    const [activeImage, setActiveImage] = useState(previewDataSet[0].imageAddress);
+   
+    const onClickSubImageHandler= (image, className) => {
+        setActiveImage(image);
+        setPreviewData(defaultDataSet);
+   }
 
     return(
         <div className={styles["preview-box"]}>
-            <div className={styles["main-image-box"]} style={{backgroundImage: `url(${activeImage})`}}/>
+            <MainImageBox className={styles["main-image-box"]} activeImage={activeImage}/>
             <div className={styles["sub-image-boxes"]}>
-                {previewData.map(object=><div 
-                    key={object.key} 
-                    className={object.imageClasses} 
-                    style={{backgroundImage: `url(${object.imageAddress})`}} 
-                    onClick={onClickSubImageHandler} 
+                {previewData.map(object=><SubImageBox
+                key={previewData.indexOf(object)}
+                className={object.boxClasses} 
+                backgroundImage={object.imageAddress}
+                onClickSubImage = {onClickSubImageHandler}
                 />)}
             </div>
         </div>
-    )
+    );
 }
 
 export default Preview;
